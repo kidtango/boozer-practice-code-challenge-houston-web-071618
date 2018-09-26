@@ -1,13 +1,26 @@
-import React from 'react'
+import React from "react";
 
-const CocktailDisplay = (props) => {
+const CocktailDisplay = ({
+  cocktail: { name, description, instructions, proportions }
+}) => {
+  // console.log(proportions);
   return (
-    <div id="cocktail-display">
-      <h1>{/* Cocktail Name */}</h1>
-      <h3>{/* Cocktail Description */}</h3>
-      <p>{/* Cocktail Instructions */}</p>
+    <div>
+      <h4>{name}</h4>
+      <p>
+        <span>Description:</span> {description}
+      </p>
+      <p>Instructions: {instructions}</p>
+      <p>Ingredients: </p>
+      <ul>
+        {proportions.map(ingredient => (
+          <li key={ingredient.id}>
+            {ingredient.ingredient_name} {ingredient.amount}
+          </li>
+        ))}
+      </ul>
     </div>
-  )
-}
+  );
+};
 
-export default CocktailDisplay
+export default CocktailDisplay;
